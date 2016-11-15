@@ -11,13 +11,14 @@
             const author = article.author ? `<h5 class="author">${article.author}</h5>` : '';
             const img = article.urlToImage ?  `<img class="image-to-logo" src="${article.urlToImage }" />`: '';
             const description = article.description ? `<p class="description">${article.description}</p>`: '';
+            const title = `<h3 class="title">${article.title}</h3>`;
             const url = article.url ? `<a href="${article.url}">more</a>`: '';
-            let time = article.publishedAt ? `<time>${new Date(article.publishedAt).toLocaleString('en-US').split(', ')}</time>`: '';
+            const time = article.publishedAt ? `<time>${new Date(article.publishedAt).toLocaleString('en-US').split(', ')}</time>`: '';
             const element = (
             `<div>
                 ${author}
                 ${img}
-                <h3 class="title">${article.title}</h3>
+                ${title}
                 ${description}
                 ${url}
                 ${time}

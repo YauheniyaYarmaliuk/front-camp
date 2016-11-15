@@ -5,16 +5,16 @@
 }
 
 div {
- margin: 0 auto;
+    margin: 0 auto;
 }
 
 /*HEADER*/
 
 .logo {
-	position: relative;
-	font-size: 36px;
-	color: #483D8B;
-	margin: 48px 18px 20px 151px;
+    position: relative;
+    font-size: 36px;
+    color: #483D8B;
+    margin: 48px 18px 20px 151px;
 }
 
 /* HACKERNEWS */
@@ -50,9 +50,12 @@ div {
 a {
     text-decoration: none;
     display: block;
+    padding-bottom: 15px;
 }
 
 time {
     margin: 0 auto;
     display: block;
+    margin-top: 10px;
+    padding-bottom: 15px;
 }
