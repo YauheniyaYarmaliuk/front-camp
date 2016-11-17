@@ -5,8 +5,6 @@ result.then(function (response) {
     return response.json();
 }).then(function (json) {
     return generateNews(json);
-}).catch(function (ex) {
-    return console.error('failed', ex);
 });
 
 var generateNews = function generateNews(json) {
