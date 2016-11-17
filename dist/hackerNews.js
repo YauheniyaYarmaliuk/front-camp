@@ -1,5 +1,8 @@
 'use strict';
+<<<<<<< HEAD
 
+=======
+>>>>>>> b41366e0cc90e224b4f8034a3169fbd2d99bc37b
 var result = fetch('https://newsapi.org/v1/articles?source=hacker-news&sortBy=top&apiKey=5c16623f895c44948812458d23c5396e');
 
 result.then(function (response) {
