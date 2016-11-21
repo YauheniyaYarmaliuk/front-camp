@@ -20,7 +20,8 @@ Front-camp is frontend Mentoring Program includes separate branches.
   check in the console: 
 * git --version 
 
-4) # Run
+4)#Run
+
 * open git bash
 * git clone https://github.com/YauheniyaYarmaliuk/front-camp.git (clone project in your pc)
 * cd front-camp (git open folder front-camp)
