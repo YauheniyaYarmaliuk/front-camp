@@ -5,15 +5,15 @@ Front-camp is frontend Mentoring Program includes separate branches.
   If you have java, npm and git in your pc, you should start from 4th point.
 
 1) install java http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-check in the console: 
-java -version
+/ check in the console: 
+ * java -version
 
 2) install node.js https://nodejs.org/en/
-check in the console: 
-npm -version
+/ check in the console: 
+* npm -version
 
 3) install git bash https://git-scm.com/
-check in the console: 
+* check in the console: 
 git --version 
 
 4) open git bash
