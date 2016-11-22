@@ -9,7 +9,7 @@ Front-camp is frontend Mentoring Program includes separate branches.
   check in the console: 
  * java -version
 
-2) install node.js https://nodejs.org/en/
+2) install node.js https://nodejs.org/en/ Current version
 
   check in the console: 
 * npm -version
