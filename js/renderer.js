@@ -1,5 +1,5 @@
- class articlesRenderer {
-     constructor(rootElementId){}
+ class ArticlesRenderer {
+     constructor(rootElementId){this.rootElementId = rootElementId;}
      generateNews (json) {
                  const news = document.getElementById(this.rootElementId);
                  const {articles} = json;
@@ -34,4 +34,4 @@
                 news.innerHTML=HTML;
      }
  }
-export default articlesRenderer;
+export default ArticlesRenderer;

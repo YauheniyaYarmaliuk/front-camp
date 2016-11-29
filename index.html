@@ -2,18 +2,16 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="dist/bundle.css">
     <meta name="viewport" content="width=device-width">
 </head>
 <body>
 <div class="wrapper">
     <div class="logo">Hacker news</div>
+    <button type="button" id="news-button">News Button</button>
     <div id="hacker-news"></div>
     <a href="https://newsapi.org/">powered by NewsAPI.org</a>
 </div>
-<script src="node_modules/babel-polyfill/dist/polyfill.js"></script>
-<script src="node_modules/fetch-polyfill/fetch.js"></script>
-<script src="node_modules/es6-promise/dist/es6-promise.js"></script>
-<script src="dist/index.js"></script>
+<script src="dist/bundle.js"></script>
 </body>
 </html>

@@ -1,10 +1,7 @@
-import articlesRenderer from 'renderer.js';
-import apiFetch from 'apiFetch.js';
-import { API_URL, ROOT_ELEMENT_ID } from 'constants.js';
-class news {
+import ArticlesRenderer from './renderer.js';
+import ApiFetch from './apiFetch.js';
+import { API_URL, ROOT_ELEMENT_ID } from './constants.js';
 
+export const api = new ApiFetch(API_URL);
+export const renderer = new ArticlesRenderer(ROOT_ELEMENT_ID);
 
-}
-const api = new apiFetch(API_URL);
-const renderer = new articlesRenderer(ROOT_ELEMENT_ID);
-//api.fetch(renderer.generateNews);

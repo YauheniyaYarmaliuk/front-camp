@@ -1,5 +1,5 @@
-class apiFetch {
-    constructor(apiUrl){}
+class ApiFetch {
+    constructor(apiUrl){this.apiUrl = apiUrl;}
     fetch(responseAction){
         return fetch(this.apiUrl)
              .then((response) => response.json())
@@ -8,5 +8,5 @@ class apiFetch {
 
     }
 }
-export default apiFetch;
+export default ApiFetch;
 
