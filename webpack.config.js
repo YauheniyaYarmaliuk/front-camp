@@ -1,5 +1,8 @@
 'use strict';
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const NODE_ENV = process.env.NODE_ENV || 'development';
+const webpack = require('webpack');
+
 module.exports = {
     context: __dirname + '/',
     entry: {
@@ -9,14 +12,9 @@ module.exports = {
         filename: 'bundle.js',
         path: __dirname + '/dist',
         publicPath: '/dist'
-
-    },
-    watch: true,
-    watchOptions: {
-        aggregateTimeout: 100
     },
     resolve: {
-        extensions: ['', '.js', '.css'],
+        extensions: ['', '.js', '.css', '.less'],
         modulesDirectories: ['node_modules']
     },
     module: {
@@ -25,14 +23,13 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
-
                 query: {
                     presets: ['es2015']
                 }
             },
             {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
             },
         ]
     },
@@ -40,7 +37,15 @@ module.exports = {
         host: 'localhost',
         port: 8090
     },
+    watch: NODE_ENV === 'development',
+    watchOptions: {
+        aggregateTimeout: 100
+    },
+    devtool: NODE_ENV === 'development' ? 'eval' : 'source-map',
     plugins: [
-        new ExtractTextPlugin("bundle.css")
+        new ExtractTextPlugin('bundle.css'),
+        new webpack.DefinePlugin({
+            PRODUCTION: JSON.stringify(NODE_ENV === 'production')
+        })
     ]
 }
