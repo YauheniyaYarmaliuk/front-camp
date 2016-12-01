@@ -17,18 +17,16 @@ class ArticlesRenderer {
             } = article;
 
             const authors = articleAuthor ? `<h5 class="author">${articleAuthor}</h5>` : '';
-            const img = articleUrlToImage ? `<img class="image-to-logo" src="${articleUrlToImage}" />` : '';
+            const img = articleUrlToImage ? `<img class="image-to-logo" src="${articleUrlToImage} " />` : '';
             const descriptions = articleDescription ? `<p class="description">${articleDescription}</p>` : '';
-            const titles = `<h3 class="title">${articleTitle}</h3>`;
-            const link = articleUrl ? `<a href="${articleUrl}">more</a>` : '';
+            const titles = `<a href="${articleUrl}"><h3 class="title">${articleTitle}</h3></a>`;
             const datetime = articlePublishedAt ? `<time>${new Date(articlePublishedAt).toLocaleString('en-US').split(', ')}</time>` : '';
             const element = (
                 `<div>
                          ${authors}
                          ${img}
                          ${titles}
-                         ${descriptions}
-                         ${link}
+                         ${descriptions}                     
                          ${datetime}
                      </div>`
             );

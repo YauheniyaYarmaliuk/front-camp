@@ -14,7 +14,7 @@ module.exports = {
         publicPath: '/dist'
     },
     resolve: {
-        extensions: ['', '.js', '.css', '.less'],
+        extensions: ['', '.js', '.css', '.less', '.ttf'],
         modulesDirectories: ['node_modules']
     },
     module: {
@@ -31,6 +31,10 @@ module.exports = {
                 test: /\.less$/,
                 loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
             },
+            {
+                test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+                loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
+            }
         ]
     },
     devServer: {
