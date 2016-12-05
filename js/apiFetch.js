@@ -1,6 +1,11 @@
+//Singleton
 class ApiFetch {
     constructor(apiUrl) {
-        this.apiUrl = apiUrl;
+        if (!this.instance) {
+            this.instance = this;
+            this.apiUrl = apiUrl;
+        }
+        return this.instance;
     }
 
     fetch(responseAction) {
@@ -9,6 +14,7 @@ class ApiFetch {
             .then((json) => responseAction(json))
             .catch((ex) => console.error('failed', ex));
     }
+
 }
 export default ApiFetch;
 

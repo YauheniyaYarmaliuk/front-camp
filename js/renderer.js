@@ -1,6 +1,11 @@
+//Singleton
 class ArticlesRenderer {
     constructor(rootElementId) {
-        this.rootElementId = rootElementId;
+        if (!this.instance) {
+            this.instance = this;
+            this.rootElementId = rootElementId;
+        }
+        return this.instance;
     }
 
     generateNews(json) {
