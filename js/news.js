@@ -9,12 +9,13 @@ class News {
     }
 
     register(component) {
-        this.components[component.constructor] = component;
+        this.components[component.constructor.name] = component;
     }
 
     execute(action, ...args) {
-        for (let component in this.components) {
-            if(action in component) {
+        for (let componentName in this.components) {
+            const component = this.components[componentName];
+            if (action in component) {
                 component[action](...args);
             }
 

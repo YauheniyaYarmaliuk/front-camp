@@ -1,4 +1,3 @@
-//Singleton
 class ApiFetch {
     constructor(apiUrl) {
         if (!this.instance) {
@@ -6,6 +5,7 @@ class ApiFetch {
             this.apiUrl = apiUrl;
         }
         return this.instance;
+
     }
 
     fetch(responseAction) {
