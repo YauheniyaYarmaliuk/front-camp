@@ -1,0 +1,58 @@
+Before starting work you need to create json file with data (example frontcamp.json) for import to mongodb 
+ 	
+	$ mongoimport --db frontcamp --collection frontcamp --file frontcamp.json
+
+1) Create a dump of DB as a archive in .gz format
+
+	$ mongodump --archive=frontcamp.archive.gz --gzip --db frontcamp 
+
+2) Design: Create a Posts DB with instances: authors/articles/comments/tags and others. Try to practice CRUD operation.
+
+Examples:	
+	$ mongo
+	> use frontcamp 
+	> db.frontcamp.find()
+	> db.frontcamp.insert({author: "Jon Jo", articles: "Fast Fourier transform in x86 assembly", description: "transform in x86 assembly", comments: "thanks, it's perfect", tags: "news"})
+	> db.frontcamp.update({author: "Hanna"}, {$set:{author: "Jorsh Mit"}}, {upsert:true}) 
+	> db.frontcamp.bulkWrite([{updateOne:{"filter": {"author": "Jorsh Mit"}, "update" : {$set: {"author": "Josh Mit"}}}}])
+	> db.frontcamp.bulkWrite([{updateMany:{"filter": {"author": "Jorsh Mit"}, "update" : {$set: {"author": "Josh Mit"}}}}])
+	> db.frontcamp.remove({author: "Jon"})
+	> db.frontcamp.find().sort({_id: -1})
+	> db.frontcamp.find({tags: "news"}).limit(2)
+	> db.runCommand({collMod: "news", validator:{$and: [{author:{$exists:true}},{tags:{$exists:true}}]}, validationLevel:"moderate"})
+        > db.frontcamp.validate(true)
+	> db.frontcamp.find({age:{$gte:18, $lte: 30}})
+
+3) Make your DB as faster as need but not more (create Indexes).
+
+	$ db.frontcamp.createIndex({author: 1, tags: 1})
+	$ db.frontcamp.getIndexes()	
+
+4) There are documents for each student (student_id) across a variety of classes (class_id). Your task is to calculate the class with the best average student performance. 
+   This involves calculating an average for each student in each class of all non-quiz assessments and then averaging those numbers to get a class average.
+
+   Download grades.json from Link: https://www.dropbox.com/s/hqs1n2318i5wy9q/grades.json?dl=0	
+	
+	$ mongoimport --db grades --collection grades --file grades.json
+	$ mongo
+	> use grades
+	> db.grades.aggregate([{$unwind: "$scores"}, {$match: {"scores.type": {$ne: "quiz"}}}, {
+	    $group: {
+ 	     	  _id: {
+ 	         	  student_id: "$student_id",
+   	         	  class_id: "$class_id"
+       		  }, student_avg: {$avg: "$scores.score"}
+   	    }
+	 }, {$group: {_id: "$_id.class_id", class_avg: {$avg: "$student_avg"}}}, {$sort: {class_avg: -1}}, {$limit: 1}])
+
+	answer: { "_id" : 1, "class_avg" : 64.50642324269175 } // not quize  one group
+
+5) Replication for DB above
+ 	$mongod --dbpath db1 --port 27017 --replSet myreplica
+	$ mkdir db3
+	$ mongod --dbpath db3 --port 27003 --replSet myreplica
+        $ mongo --port 27017
+	> rs.initiate()
+	> rs.status()
+	> rs.add("localhost:27003")
+	> rs.status()
