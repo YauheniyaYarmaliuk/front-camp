@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+    .wrapper
+        h1 #{article._id}
+        form.form-horizontal(action='/articles/#{article._id}/edit',method='post',name='updatearticle',enctype='application/x-www-form-urlencoded')
+            .form-group
+                label.col-sm-2.control-label(for='author') author
+                .col-sm-10
+                    input.form-control#inputAuthor(type='text', value='#{article.author}', name='author')
+            .form-group
+                label.col-sm-2.control-label(for='title') title
+                .col-sm-10
+                    input.form-control#inputTitle(type='text', value='#{article.title}', name='title')
+            .form-group
+                label.col-sm-2.control-label(for='description') description
+                .col-sm-10
+                    input.form-control#inputDescription(type='text', value='#{article.description}', name='description')
+            .form-group
+                label.col-sm-2.control-label(for='url') url
+                .col-sm-10
+                    input.form-control#inputUrl(type='text', value='#{article.url}', name='url')
+            .form-group
+                label.col-sm-2.control-label(for='urlToImage') urlToImage
+                .col-sm-10
+                    input.form-control#inputUrlToImage(type='text', value='#{article.urlToImage}', name='urlToImage')
+            .form-group
+                label.col-sm-2.control-label(for='publishedAt') publishedAt
+                .col-sm-10
+                    input#inputPublishedAt(type='date', value='#{articlepublishedAt}', name='publishedAt')
+            .form-group
+                 input(type='hidden',value='PUT',name='_method')
+            .form-group
+                .col-sm-offset-2.col-sm-10
+                    button#btnSubmit(type='submit').
+                        Update
+

@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+    .wrapper
+        h1.
+            #{title}
+
+        form.form-horizontal(role='form')#formAddArticle(name="addarticle",method="post",action="/articles")
+            .form-group
+                label.col-sm-2.control-label(for='author') author
+                .col-sm-10
+                    input.form-control#inputAuthor(type="text", name="author")
+            .form-group
+                label.col-sm-2.control-label(for='title') title
+                .col-sm-10
+                    input.form-control#inputTitle(type="text", name="title")
+            .form-group
+                label.col-sm-2.control-label(for='description') description
+                .col-sm-10
+                    input.form-control#inputDescription(type="text", name="description")
+            .form-group
+                label.col-sm-2.control-label(for='url') url
+                .col-sm-10
+                    input.form-control#inputUrl(type="text", name="url")
+            .form-group
+                label.col-sm-2.control-label(for='urlToImage') urlToImage
+                .col-sm-10
+                    input.form-control#inputUrlToImage(type="text", name="urlToImage")
+            .form-group
+                label.col-sm-2.control-label(for='publishedAt') publishedAt
+                .col-sm-10
+                    input#inputPublishedAt(type="date", name="publishedAt")
+            .form-group
+                .col-sm-offset-2.col-sm-10
+                    button.btn.btn-default#btnSubmit(type="submit") submit

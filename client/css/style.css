@@ -1,0 +1,45 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a:link, a:visited {
+     text-decoration: none;
+}
+
+.blockPosition {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+button >  a:link, a:visited {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+button.btn.btn-success {
+    float: right;
+}
+
+button.btn.btn-success {
+    float: right;
+}
+
+.btn-warning + .btn-success {
+    margin-left: 10px;
+}
+
+.btn-danger + .btn-warning {
+    margin-left: 10px;
+}
+
+a {
+    color: #00B7FF;
+    text-decoration: none;
+}
+
+#allArticles > a {
+    color: #00B7FF;
+    text-decoration: none;
+}

@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+    .wrapper
+        button.btn.btn-success(type='button')
+             a(href='/articles/new') New
+        h1.
+             #{title}
+        ul
+            - each article, i in articles
+                h5.author #{article.author}
+                img.image-to-logo(src='#{article.urlToImage} ')
+                p.description #{article.description}
+                a(href='#{article.url}')
+                    h3.title #{article.title}
+                time #{new Date(article.publishedAt).toLocaleString('en-US').split(', ')}
+                .blockPosition
+                    button.btn.btn-danger.btn-sm(value='btn', onclick='remove(`#{article._id}`)') Delete
+                    button.btn.btn-warning(type='button')
+                        a(href='/articles/#{article._id}/edit') Edit
+                    button.btn.btn-success(type='button')
+                        a(href='/articles/#{article._id}') Show

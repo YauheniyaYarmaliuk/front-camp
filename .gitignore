@@ -44,13 +44,3 @@ jspm_packages
 # Output of 'npm pack'
 *.tgz
 
-# Yarn Integrity file
-
-.yarn-integrity
-<<<<<<< HEAD
-dist/
-!bower_components/**/dist/
-=======
-
-.yarn-integrity
->>>>>>> baa9115931ad25304946053520cca7331d42f12b
