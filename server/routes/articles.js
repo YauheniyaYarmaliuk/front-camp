@@ -13,6 +13,12 @@ router.use(methodOverride(function(req, res){
       }
 }))
 
+router.all('/', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
+
 router.route('/')
     .get(function(req, res, next) {
         mongoose.model('Article').find({}, function (err, articles) {
@@ -20,12 +26,13 @@ router.route('/')
                   return console.error(err);
               } else {
                   res.format({
-                    html: function(){
+                    json: function(){
                         res.render('articles/index', {
                               title: 'All articles',
                               "articles" : articles
                           });
-                    },
+                    }
+                    ,
                     json: function(){
                         res.json(articles);
                     }
@@ -53,10 +60,11 @@ router.route('/')
               } else {
                   console.log('POST creating new article: ' + article);
                   res.format({
-                    html: function(){
+                    json: function(){
                         res.location("articles");
                         res.redirect("/articles");
-                    },
+                    }
+                    ,
                     json: function(){
                         res.json(article);
                     }
@@ -77,9 +85,10 @@ router.param('id', function(req, res, next, id) {
             let err = new Error('Not Found');
             err.status = 404;
             res.format({
-                html: function(){
+                json: function(){
                     next(err);
-                 },
+                 }
+                 ,
                 json: function(){
                        res.json({message : err.status  + ' ' + err});
                  }
@@ -101,12 +110,13 @@ router.route('/:id')
         let articlePublishedAt = article.publishedAt ? article.publishedAt.toISOString(): '';
         articlePublishedAt = articlePublishedAt.substring(0, articlePublishedAt.indexOf('T'))
         res.format({
-          html: function(){
+          json: function(){
               res.render('articles/show', {
                 "articlePublishedAt" : articlePublishedAt,
                 "article" : article
               });
-          },
+          }
+          ,
           json: function(){
               res.json(article);
           }
@@ -125,13 +135,14 @@ router.route('/:id/edit')
               let articlepublishedAt = article.publishedAt ? article.publishedAt.toISOString(): '';
               articlepublishedAt = articlepublishedAt.substring(0, articlepublishedAt.indexOf('T'))
 	            res.format({
-	                html: function(){
+	                json: function(){
 	                       res.render('articles/edit', {
 	                          title: 'Article' + article._id,
                             "articlepublishedAt" : articlepublishedAt,
 	                          "article" : article
 	                      });
-	                 },
+	                 }
+	                 ,
 	                json: function(){
 	                       res.json(article);
 	                 }
@@ -160,9 +171,10 @@ router.route('/:id/edit')
 	          }
 	          else {
 	                  res.format({
-	                      html: function(){
+	                      json: function(){
 	                           res.redirect("/articles/" + article._id);
-	                     },
+	                     }
+	                     ,
 	                    json: function(){
 	                           res.json(article);
 	                     }
@@ -182,9 +194,10 @@ router.route('/:id/edit')
 	                } else {
 	                    console.log('DELETE removing ID: ' + article._id);
 	                    res.format({
-	                          html: function(){
+	                          json: function(){
 	                               res.redirect("/articles");
-	                         },
+	                         }
+	                         ,
 	                        json: function(){
 	                               res.json({message : 'deleted',
 	                                   item : article

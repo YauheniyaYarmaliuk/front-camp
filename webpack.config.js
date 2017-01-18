@@ -6,7 +6,7 @@ const webpack = require('webpack');
 module.exports = {
     context: __dirname + '/',
     entry: {
-        index: './client/js/index.js'
+        index: './react/react.js',
     },
     output: {
         filename: 'bundle.js',
@@ -20,11 +20,11 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015']
+                    presets: ['es2015', 'react']
                 }
             },
             {
@@ -39,7 +39,8 @@ module.exports = {
     },
     devServer: {
         host: 'localhost',
-        port: 8090
+        port: 8090,
+        headers: { "Access-Control-Allow-Origin": "*" }
     },
     watch: NODE_ENV === 'development',
     watchOptions: {
