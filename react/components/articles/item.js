@@ -38,16 +38,15 @@ class Home extends Component {
     } = this.props.data;
     if (!_id) return <span />;
 
-    const img = urlToImage && <img src={urlToImage} />;
-    const desc = description && <p>{description}</p>;
+    const img = urlToImage && <img className = "image-to-logo" src={urlToImage} />;
+    const desc = description && <p className="description">{description}</p>;
     let date = publishedAt && new Date(publishedAt);
     date = date && <span>{new Date(date).toLocaleString('en-US').split(', ')[0]}</span>;
-    const auth = author && <b>Author: {author}</b>;
-    const linkUrl = url && <a href={url} target="_blank">Link</a>;
+    const auth = author && <b className="author">Author: {author}</b>;
+    const linkUrl = url && <a href={url} target="_blank"><h3 className="title">{title}</h3></a>;
 
     return (
       <div className="item">
-        <h3>{title}</h3>
         {img}
         {desc}
         <p>
