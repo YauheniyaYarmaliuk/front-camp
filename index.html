@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="dist/bundle.css">
-    <meta name="viewport" content="width=device-width">
-</head>
-<body>
-<div class="wrapper">
-    <div id="root">Loading ...</div>
-    <div class="logo">Hacker news</div>
-    <div id="hacker-news"></div>
-    <a href="https://newsapi.org/">powered by NewsAPI.org</a>
-</div>
-<script src="dist/bundle.js"></script>
-</body>
+<html ng-app="articlesApp">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="dist/bundle.css">
+        <link rel="stylesheet" href="client/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width">
+        <script src="node_modules/angular/angular.js"></script>
+        <script src="node_modules/angular-resource/angular-resource.js"></script>
+        <script src="node_modules/angular-route/angular-route.js"></script>
+        <script src="client/angular/controller.js"></script>
+    </head>
+    <body>
+    <div class="wrapper">
+        <ng-view></ng-view>
+        <div class="logo" ng-controller="ArticleCtrl">{{title}}</div>
+        <div ng-controller="ArticlesListCtrl">
+        <div id="hacker-news" ng-repeat="article in articles">
+            <h5 class="author">{{article.author}}</h5>
+            <img class="image-to-logo" ng-src="{{article.urlToImage}}" />
+            <p class="description">{{article.description}}</p>
+            <a href="{{article.url}}"><h3 class="title">{{article.title}}</h3></a>
+            <time>{{article.publishedAt | date:'dd/MM/yyyy'}}</time>
+            <div class="blockPosition">
+                <a href="#/edit/{{article._id}}" class="btn btn-warning">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+
+        </div>
+        <a href="https://newsapi.org/">powered by NewsAPI.org</a>
+        </div>
+
+    </div>
+    </body>
 </html>

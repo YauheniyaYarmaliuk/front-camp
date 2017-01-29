@@ -6,7 +6,7 @@ const webpack = require('webpack');
 module.exports = {
     context: __dirname + '/',
     entry: {
-        index: './react/react.js',
+        index: './client/js/index.js',
     },
     output: {
         filename: 'bundle.js',
