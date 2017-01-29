@@ -1,16 +1,16 @@
 let articlesApp = angular.module('articlesApp',['ngRoute']);
 
-articlesApp.config(['$routeProvider', function($routeProvide){
+articlesApp.config(['$routeProvider', '$locationProvider', function($routeProvide){
+    // $locationProvider.html5Mode({
+    //     enabled: true,
+    //     requireBase: false
+    // })
     $routeProvide
-        .when('/',{
-            templateUrl:'home.html',
-            controller:'ArticlesListCtrl'
-        })
-        .when('/new',{
+         .when('/new',{
             templateUrl:'template/new.html',
             controller:'NewArticles'
         })
-        .when('/edit/:_id',{
+        .when('/edit/:id',{
             templateUrl:'template/edit.html',
             controller:'EditArticle'
         })
@@ -33,6 +33,6 @@ articlesApp.controller('ArticlesListCtrl', function ($scope, $http) {
 });
 
 articlesApp.controller('EditArticle',['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams) {
-    $scope._id = $routeParams._id;
+    $scope.id = $routeParams.id;
 
 }]);
