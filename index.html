@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html ng-app="articlesApp">
     <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="dist/bundle.css">
-        <link rel="stylesheet" href="client/css/bootstrap.min.css">
-        <meta name="viewport" content="width=device-width">
-        <script src="node_modules/angular/angular.js"></script>
-        <script src="node_modules/angular-resource/angular-resource.js"></script>
-        <script src="node_modules/angular-route/angular-route.js"></script>
-        <script src="client/angular/controller.js"></script>
+      <base href="/"/>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="dist/bundle.css">
+      <link rel="stylesheet" href="client/css/bootstrap.min.css">
+      <meta name="viewport" content="width=device-width">
+      <script src="node_modules/angular/angular.js"></script>
+      <script src="node_modules/angular-resource/angular-resource.js"></script>
+      <script src="node_modules/angular-route/angular-route.js"></script>
+      <script src="client/angular/controller.js"></script>
     </head>
     <body>
     <div class="wrapper">
@@ -23,7 +24,8 @@
             <time>{{article.publishedAt | date:'dd/MM/yyyy'}}</time>
             <div class="blockPosition">
                 <a href="/edit/{{article._id}}" class="btn btn-warning">Edit</a>
-                <a href="#" class="btn btn-danger">Delete</a>
+                <button class="btn btn-danger"  ng-controller="DeleteArticle" ng-click='delete(article._id)'>Delete</button>
+                <a href="/{{article._id}}"  class="btn btn-success">Show</a>
             </div>
 
         </div>
