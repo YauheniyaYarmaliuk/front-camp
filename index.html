@@ -15,7 +15,9 @@
     <div class="wrapper">
         <ng-view></ng-view>
         <div class="logo" ng-controller="ArticleCtrl">{{title}}</div>
+
         <div ng-controller="ArticlesListCtrl">
+            <a href="/new"  class="btn btn-success">Add an article</a>
         <div id="hacker-news" ng-repeat="article in articles">
             <h5 class="author">{{article.author}}</h5>
             <img class="image-to-logo" ng-src="{{article.urlToImage}}" />
@@ -23,7 +25,7 @@
             <a href="{{article.url}}"><h3 class="title">{{article.title}}</h3></a>
             <time>{{article.publishedAt | date:'dd/MM/yyyy'}}</time>
             <div class="blockPosition">
-                <a href="/edit/{{article._id}}" class="btn btn-warning">Edit</a>
+                <a href="/{{article._id}}/edit" class="btn btn-warning">Edit</a>
                 <button class="btn btn-danger"  ng-controller="DeleteArticle" ng-click='delete(article._id)'>Delete</button>
                 <a href="/{{article._id}}"  class="btn btn-success">Show</a>
             </div>
