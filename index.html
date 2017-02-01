@@ -18,6 +18,7 @@
 
         <div ng-controller="ArticlesListCtrl">
             <a href="/new"  class="btn btn-success">Add an article</a>
+			<h2>Count articles : {{articles.length}}</h2>
         <div id="hacker-news" ng-repeat="article in articles">
             <h5 class="author">{{article.author}}</h5>
             <img class="image-to-logo" ng-src="{{article.urlToImage}}" />
