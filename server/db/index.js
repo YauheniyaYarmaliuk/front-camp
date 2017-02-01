@@ -1,2 +1,2 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://EPBYBREW0193/frontcamp');
+mongoose.connect('mongodb://localName/frontcamp');

@@ -6,6 +6,6 @@
 <p>Description: {{article.description}}</p>
 <p>Url: {{article.url}}</p>
 <p>UrlToImage: {{article.urlToImage}}</p>
-<p>PublishedAt: {{article.publishedAt}}</p>
+<time>{{article.publishedAt | date:'dd/MM/yyyy'}}</time>
 
 <div click action="action()"></div>
