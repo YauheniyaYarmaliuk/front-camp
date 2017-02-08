@@ -6,6 +6,8 @@ import  './controllers/articlesListCtrl.js';
 import './controllers/articleCtrl.js';
 import './controllers/deleteArticleCtrl.js';
 import './directives/directive.js';
+import '../css/articles.less';
+import '../css/page.less';
 
 articlesApp.config(['$routeProvider', '$locationProvider', function($routeProvide, $locationProvider){
     $locationProvider.html5Mode({
