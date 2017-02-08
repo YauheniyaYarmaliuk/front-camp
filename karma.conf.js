@@ -15,10 +15,6 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
     files: [
-//        'node_modules/angular/angular.js',
-//        'node_modules/angular-mocks/angular-mocks.js',
-//        'client/angular/**/*.js',
-//        'client/angular/index.js',
         'test.js'
     ],
 
@@ -30,7 +26,6 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       'client/angular/**/*.js': ['webpack'],
-//      'client/angular/index.js': ['webpack'],
       'test.js': ['webpack']
     },
 
@@ -72,7 +67,7 @@ module.exports = function(config) {
         noInfo: true,
         // and use stats to turn off verbose output
         stats: {
-          // options i.e. 
+          // options i.e.
           chunks: false
         }
     },

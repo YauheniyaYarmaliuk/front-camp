@@ -1,7 +1,8 @@
 require('angular');
 require('angular-mocks/angular-mocks');
-require('./modules');
-require('./requireAngular.js');
+require('angular-route');
+require('./node_modules/angular-resource/angular-resource.js');
+require('./client/angular/index');
 
 const testsContext = require.context('./test', true, /\.spec\.js/);
 testsContext.keys().forEach(testsContext);
