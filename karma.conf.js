@@ -15,10 +15,10 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
     files: [
-        'node_modules/angular/angular.js',
-        'node_modules/angular-mocks/angular-mocks.js',
-        'client/angular/**/*.js',
-        'client/angular/index.js',
+//        'node_modules/angular/angular.js',
+//        'node_modules/angular-mocks/angular-mocks.js',
+//        'client/angular/**/*.js',
+//        'client/angular/index.js',
         'test.js'
     ],
 
@@ -30,8 +30,8 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       'client/angular/**/*.js': ['webpack'],
-      'client/angular/index.js': ['webpack'],
-        'test.js': ['webpack']
+//      'client/angular/index.js': ['webpack'],
+      'test.js': ['webpack']
     },
 
     webpack: webpackConfig,

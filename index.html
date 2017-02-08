@@ -15,7 +15,7 @@
     <body>
     <div class="wrapper">
         <ng-view></ng-view>
-        <div class="logo" ng-controller="ArticleCtrl">{{title}}</div>
+        <div class="logo" ng-controller="ArticleCtrl">{{title | upper}}</div>
 
         <div ng-controller="ArticlesListCtrl">
             <a href="/new"  class="btn btn-success">Add an article</a>
